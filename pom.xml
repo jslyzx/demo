@@ -23,6 +23,8 @@
         <lombok.version>1.18.24</lombok.version>
         <mysql.version>8.0.27</mysql.version>
         <sa-token.version>1.37.0</sa-token.version>
+        <poi.version>3.14</poi.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
 
     <!--子模块管理-->

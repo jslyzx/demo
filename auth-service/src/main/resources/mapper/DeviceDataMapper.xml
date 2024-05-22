@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yph.auth.mapper.DeviceDataMapper" >
+
+	<sql id="Base_Column_List" >
+		t.id,
+		t.device_name,
+		t.iot_id,
+		t.note_name,
+		t.product_id,
+		t.product_name,
+		t.function_name,
+		t.access_location,
+		t.data_value,
+		t.alarm_time,
+		t.processing_result,
+		t.processor,
+		t.processing_time,
+		t.status,
+		t.create_time,
+		t.update_time,
+		t.create_by,
+		t.update_by,
+		t.remark
+	</sql>
+	<select id="selectAll" parameterType="map" resultType="com.yph.auth.entity.DeviceData">
+		select * from device_data t
+		<where>
+			<if test="queryMap.queryType!=null and queryMap.queryType==1 ">
+
+			</if>
+			<if test="queryMap.queryType!=null and queryMap.queryType==2 ">
+
+			</if>
+			<if test="queryMap.id!=null">
+				and t.id = #{queryMap.id}
+			</if>
+			<if test="queryMap.deviceName!=null">
+				and t.device_name like CONCAT('%',#{queryMap.deviceName},'%' )
+			</if>
+			<if test="queryMap.ioid!=null">
+				and t.iot_id like CONCAT('%',#{queryMap.ioid},'%' )
+			</if>
+			<if test="queryMap.noteName!=null">
+				and t.note_name like CONCAT('%',#{queryMap.noteName},'%' )
+			</if>
+			<if test="queryMap.producid!=null">
+				and t.product_id like CONCAT('%',#{queryMap.producid},'%' )
+			</if>
+			<if test="queryMap.producname!=null">
+				and t.product_name like CONCAT('%',#{queryMap.producname},'%' )
+			</if>
+			<if test="queryMap.functionName!=null">
+				and t.function_name like CONCAT('%',#{queryMap.functionName},'%' )
+			</if>
+			<if test="queryMap.accessLocation!=null">
+				and t.access_location like CONCAT('%',#{queryMap.accessLocation},'%' )
+			</if>
+			<if test="queryMap.dataValue!=null">
+				and t.data_value like CONCAT('%',#{queryMap.dataValue},'%' )
+			</if>
+			<if test="queryMap.alarmTime!=null">
+				and t.alarm_time = #{queryMap.alarmTime}
+			</if>
+			<if test="queryMap.processingResult!=null">
+				and t.processing_result like CONCAT('%',#{queryMap.processingResult},'%' )
+			</if>
+			<if test="queryMap.processor!=null">
+				and t.processor like CONCAT('%',#{queryMap.processor},'%' )
+			</if>
+			<if test="queryMap.processingTime!=null">
+				and t.processing_time = #{queryMap.processingTime}
+			</if>
+			<if test="queryMap.status!=null">
+				and t.status like CONCAT('%',#{queryMap.status},'%' )
+			</if>
+			<if test="queryMap.createTime!=null">
+				and t.create_time = #{queryMap.createTime}
+			</if>
+			<if test="queryMap.updateTime!=null">
+				and t.update_time = #{queryMap.updateTime}
+			</if>
+			<if test="queryMap.createBy!=null">
+				and t.create_by = #{queryMap.createBy}
+			</if>
+			<if test="queryMap.updateBy!=null">
+				and t.update_by = #{queryMap.updateBy}
+			</if>
+			<if test="queryMap.remark!=null">
+				and t.remark like CONCAT('%',#{queryMap.remark},'%' )
+			</if>
+		</where>
+		order by t.id desc
+	</select>
+
+</mapper>
