@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yph.auth.mapper.DeviceMapper" >
+
+	<sql id="Base_Column_List">
+		t.id,
+		t.device_id,
+		t.binding_location,
+		t.location_type,
+		t.physical_location_type,
+		t.device_name,
+		t.note_name,
+		t.product_id,
+		t.produce_name,
+		t.device_description,
+		t.create_time,
+		t.update_time,
+		t.is_deleted,
+		t.create_by,
+		t.update_by,
+		t.remark
+	</sql>
+    <select id="selectAll" parameterType="map" resultType="com.yph.auth.entity.Device">
+		select * from device t
+		<where>
+        	<if test="queryMap.queryType!=null and queryMap.queryType==1 ">
+            
+            </if>
+            <if test="queryMap.queryType!=null and queryMap.queryType==2 ">
+            
+            </if>
+        	<if test="queryMap.id!=null">
+				and t.id = #{queryMap.id}
+			</if>
+        	<if test="queryMap.deviceId!=null">
+            	and t.device_id like CONCAT('%',#{queryMap.deviceId},'%' )
+			</if>
+        	<if test="queryMap.bindingLocation!=null">
+            	and t.binding_location like CONCAT('%',#{queryMap.bindingLocation},'%' )
+			</if>
+        	<if test="queryMap.locationType!=null">
+				and t.location_type = #{queryMap.locationType}
+			</if>
+        	<if test="queryMap.physicalLocationType!=null">
+				and t.physical_location_type = #{queryMap.physicalLocationType}
+			</if>
+        	<if test="queryMap.deviceName!=null">
+            	and t.device_name like CONCAT('%',#{queryMap.deviceName},'%' )
+			</if>
+        	<if test="queryMap.noteName!=null">
+            	and t.note_name like CONCAT('%',#{queryMap.noteName},'%' )
+			</if>
+        	<if test="queryMap.producid!=null">
+            	and t.product_id like CONCAT('%',#{queryMap.producid},'%' )
+			</if>
+        	<if test="queryMap.produceName!=null">
+            	and t.produce_name like CONCAT('%',#{queryMap.produceName},'%' )
+			</if>
+        	<if test="queryMap.deviceDescription!=null">
+            	and t.device_description like CONCAT('%',#{queryMap.deviceDescription},'%' )
+			</if>
+        	<if test="queryMap.createTime!=null">
+				and t.create_time = #{queryMap.createTime}
+			</if>
+        	<if test="queryMap.updateTime!=null">
+				and t.update_time = #{queryMap.updateTime}
+			</if>
+        	<if test="queryMap.isDeleted!=null">
+				and t.is_deleted = #{queryMap.isDeleted}
+			</if>
+        	<if test="queryMap.createBy!=null">
+				and t.create_by = #{queryMap.createBy}
+			</if>
+        	<if test="queryMap.updateBy!=null">
+				and t.update_by = #{queryMap.updateBy}
+			</if>
+        	<if test="queryMap.remark!=null">
+            	and t.remark like CONCAT('%',#{queryMap.remark},'%' )
+			</if>
+		</where>
+		order by t.id desc
+    </select>
+    
+</mapper>

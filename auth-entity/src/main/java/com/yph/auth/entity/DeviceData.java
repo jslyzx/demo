@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.yph.auth.entity.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -75,6 +76,7 @@ public class DeviceData extends BaseEntity {
 	 */
 	@TableField(value = "alarm_time")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date alarmTime;
 	/**
 	 *处理结果
@@ -91,6 +93,7 @@ public class DeviceData extends BaseEntity {
 	 */
 	@TableField(value = "processing_time")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date processingTime;
 	/**
 	 *状态 0 正常 1 异常 2待处理 3已处理
@@ -102,12 +105,14 @@ public class DeviceData extends BaseEntity {
 	 */
 	@TableField(value = "create_time")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date createTime;
 	/**
 	 *更新时间
 	 */
 	@TableField(value = "update_time")
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date updateTime;
 	/**
 	 *创建人id
